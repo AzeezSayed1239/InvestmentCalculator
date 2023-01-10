@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<a href="{% url "index" %}" class="btn btn-outline-primary mt-5 mx-3"> Go to Home </a>
+<div class="row mt-5">
+    <div class="col-12 col-md-5 mx-auto">
+        <h1> Investment Results </h1>
+
+        <h5> After {{number_of_years}} years, your investment's worth is {{total_result}}</h5>
+        <div class= "mt-5">
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">Yeart</th>
+                <th scope="col">Interest</th>
+                <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for key,value in yearly_results.items%}
+                <tr>
+                <th scope="row">{{key}}</th>
+                <td>{{value.interest}}</td>
+                <td>{{value.amount}}</td>
+                </tr>
+                {% endfor %}
+               
+            </tbody>
+    </table>
+    </div>
+
+    </div>
+</div>
+
+{% endblock content %}
